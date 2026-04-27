@@ -1,0 +1,21 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+venv/
+ENV/
+env/
+
+# IDEs (PyCharm, VS Code)
+.idea/
+.vscode/
+*.swp
+
+# Databases (локальна база даних не має бути в репозиторії)
+*.sqlite3
+
+# OS generated files
+.DS_Store
+Thumbs.db
