@@ -27,5 +27,6 @@ class CommentaryForm(forms.ModelForm):
     def clean(self):
         cleaned_data = super().clean()
         if self.user is None or not self.user.is_authenticated:
-            raise ValidationError("You must be authenticated " "to post a comment.")
+            raise ValidationError("You must be authenticated "
+                                  "to post a comment.")
         return cleaned_data
