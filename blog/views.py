@@ -6,10 +6,11 @@ from django.shortcuts import render
 from .models import Post
 from django.core.paginator import Paginator
 
+
 def index(request):
     posts = Post.objects.all().order_by("-created_time")
     paginator = Paginator(posts, 5)
-    page_number = request.GET.get('page')
+    page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
     context = {
@@ -17,6 +18,7 @@ def index(request):
         "post_list": page_obj.object_list,
     }
     return render(request, "blog/index.html", context=context)
+
 
 class PostDetailView(generic.DetailView):
     model = Post

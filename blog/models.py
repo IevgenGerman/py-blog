@@ -21,7 +21,9 @@ class Post(models.Model):
 
 
 class Commentary(models.Model):
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, related_name="comments", null=True)
+    user = models.ForeignKey(
+        User, on_delete=models.SET_NULL, related_name="comments", null=True
+    )
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
     created_time = models.DateTimeField(auto_now_add=True)
     content = models.TextField()
@@ -31,4 +33,3 @@ class Commentary(models.Model):
 
     def __str__(self):
         return f"Comment by {self.user.username} on {self.post.title}"
-

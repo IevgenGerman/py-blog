@@ -11,11 +11,13 @@ class CommentaryForm(forms.ModelForm):
             "content": "",
         }
         widgets = {
-            "content": forms.Textarea(attrs={
-                "class": "form-control",
-                "placeholder": "Write your comment here...",
-                "rows": 3
-            }),
+            "content": forms.Textarea(
+                attrs={
+                    "class": "form-control",
+                    "placeholder": "Write your comment here...",
+                    "rows": 3,
+                }
+            ),
         }
 
     def __init__(self, *args, **kwargs):
@@ -25,5 +27,5 @@ class CommentaryForm(forms.ModelForm):
     def clean(self):
         cleaned_data = super().clean()
         if self.user is None or not self.user.is_authenticated:
-            raise ValidationError("You must be authenticated to post a comment.")
+            raise ValidationError("You must be authenticated " "to post a comment.")
         return cleaned_data
