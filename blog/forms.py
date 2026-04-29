@@ -1,6 +1,6 @@
 from django import forms
 from django.core.exceptions import ValidationError
-from .models import Commentary
+from blog.models import Commentary
 
 
 class CommentaryForm(forms.ModelForm):

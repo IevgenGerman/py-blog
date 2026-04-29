@@ -1,23 +1,16 @@
 from django.shortcuts import redirect
 from .forms import CommentaryForm
 from django.views import generic
-
-from django.shortcuts import render
+from django.views.generic import ListView
 from .models import Post
-from django.core.paginator import Paginator
 
 
-def index(request):
-    posts = Post.objects.all().order_by("-created_time")
-    paginator = Paginator(posts, 5)
-    page_number = request.GET.get("page")
-    page_obj = paginator.get_page(page_number)
-
-    context = {
-        "page_obj": page_obj,
-        "post_list": page_obj.object_list,
-    }
-    return render(request, "blog/index.html", context=context)
+class PostListView(ListView):
+    model = Post
+    template_name = "blog/index.html"
+    context_object_name = "post_list"
+    paginate_by = 5
+    ordering = ["-created_time"]
 
 
 class PostDetailView(generic.DetailView):

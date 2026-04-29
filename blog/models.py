@@ -24,7 +24,8 @@ class Post(models.Model):
 
 class Commentary(models.Model):
     user = models.ForeignKey(
-        User, on_delete=models.SET_NULL,
+        User,
+        on_delete=models.SET_NULL,
         related_name="comments",
         null=True
     )
